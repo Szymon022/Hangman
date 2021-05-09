@@ -1,6 +1,7 @@
 package com.szymon.thehangman
 
 import android.app.Activity
+import java.util.*
 
 class Hangman(val activity: Activity) {
 
@@ -37,6 +38,43 @@ class Hangman(val activity: Activity) {
             }
         }
     }
+
+    private fun completeAnswerWith(userGuess: Char) {
+        for (i in 0 until wordLength!!-1) {
+            if (userGuess == word[i]) {
+                answer?.set(i, userGuess)
+            }
+        }
+    }
+
+    private fun isGuessCorrect(userGuess: Char) = word.contains(userGuess.toUpperCase())
+
+    private fun isWordValid(word: String) = word.length <= MAX_CHARACTERS
+
+    private fun isWon() = !answer!!.contains('_')
+
+    private fun isLost() = livesLeft <= 0
+
+    private fun start() {
+        // restart game data
+        if (gameStatus != GameStatus.GAME_STARTED) {
+            livesLeft = LIVES
+            gameStatus = GameStatus.GAME_STARTED
+            println("New game has been started!")
+        }
+//        gameUI.update(this)
+    }
+
+    fun newGame(word: String) {
+        if(isWordValid(word)) {
+            this.word = word.toUpperCase()
+            initAnswerArray(this.word)
+            start()
+        } else {
+            println("Error! $word is not valid!")
+        }
+    }
+
 
     fun enterGuess(userGuess : Char) {
         if (livesLeft > 0) {
