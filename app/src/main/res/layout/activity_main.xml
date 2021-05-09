@@ -1,18 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_centerHorizontal="true"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_lives_left_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Lives left icon"
+            android:src="@drawable/ic_lives"/>
+
+        <TextView
+            android:id="@+id/tv_lives_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="0.2"/>
+
+        <TextView
+            android:id="@+id/tv_new_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="new game"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:padding="2dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/button_background"/>
+
+<!--        <Space-->
+<!--            android:layout_width="10sp"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/bt_game_restart"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/ic_restart"-->
+<!--            android:contentDescription="Restarts the game" />-->
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_gallows_pole"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:src="@drawable/img_lives_5"
+        android:contentDescription="Gallows pole image"/>
+
+    <TextView
+        android:id="@+id/tv_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="asdas"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:gravity="center"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/et_user_guess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="GUESS"
+            android:inputType="text" />
+
+
+        <Button
+            android:id="@+id/bt_enter_guess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="OK" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

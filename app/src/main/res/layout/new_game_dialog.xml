@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/ll_new_game_dialog_layout">
+
+    <TextView
+        android:id="@+id/iv_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/new_game_header"
+        android:gravity="center"
+        android:text="NEW GAME"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/et_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Enter your word"
+        android:textAllCaps="true"
+        android:inputType="text"/>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingHorizontal="10dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_cancel"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Cancel"-->
+<!--            android:textColor="@color/design_default_color_primary"/>-->
+
+<!--        <Space-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_start_game"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Start"-->
+<!--            android:textColor="@color/design_default_color_primary"/>-->
+
+<!--    </LinearLayout>-->
+
+
+</LinearLayout>
