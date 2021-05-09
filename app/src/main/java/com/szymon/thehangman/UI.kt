@@ -26,16 +26,16 @@ class UI(private val activity: Activity, private val hangmanGame: Hangman) {
         tvLivesLeft.text = livesLeft.toString()
 
         val currentAnswer = answerToString(gameInstance.answer)
-        tvAnswer.text = currentAnswer
+        tvAnswer.text = (currentAnswer)
 
-        var gallowsDrawable: Drawable? = null
-        when(gameInstance.livesLeft) {
+        val gallowsDrawable = when(gameInstance.livesLeft) {
             5 -> activity.getDrawable(R.drawable.img_lives_5)
             4 -> activity.getDrawable(R.drawable.img_lives_4)
             3 -> activity.getDrawable(R.drawable.img_lives_3)
             2 -> activity.getDrawable(R.drawable.img_lives_2)
             1 -> activity.getDrawable(R.drawable.img_lives_1)
             0 -> activity.getDrawable(R.drawable.img_lives_0)
+            else -> null
         }
         ivGallows.setImageDrawable(gallowsDrawable)
     }

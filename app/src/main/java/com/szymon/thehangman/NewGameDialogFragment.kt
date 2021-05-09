@@ -49,4 +49,5 @@ internal lateinit var listener: NewGameDialogListener
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
+
 }
