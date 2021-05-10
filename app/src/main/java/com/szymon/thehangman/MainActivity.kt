@@ -10,7 +10,8 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 
 class MainActivity : AppCompatActivity(),
-    NewGameDialogFragment.NewGameDialogListener {
+    NewGameDialogFragment.NewGameDialogListener, StatusNotificationDialogFragment.StatusDialogListener,
+    Hangman.GameStatusChangedListener {
 
 
     private lateinit var btEnterGuess: Button
@@ -60,14 +61,31 @@ class MainActivity : AppCompatActivity(),
         newGameDialog.show(supportFragmentManager, "newGame")
     }
 
+    private fun showNotificationDialog(gameStatus: Hangman.GameStatus) {
+        val notificationDialog = StatusNotificationDialogFragment(gameStatus)
+        notificationDialog.show(supportFragmentManager, "notifyStatus")
+    }
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onDialogStartClick(dialog: DialogFragment) {
         val etWord : EditText? = dialog.dialog?.findViewById<EditText>(R.id.et_word)
         val word = etWord?.text.toString()
 
-        if (hangman.isWordValid(word)) {
+        if (!hangman.isWordValid(word)) {
+            dialog.dismiss()
+            showNewGameDialog()
+        } else {
             hangman.newGame(word)
             dialog.dismiss()
         }
+    }
+
+    override fun onDialogNewGameClick(dialog: DialogFragment) {
+        dialog.dismiss()
+        showNewGameDialog()
+    }
+
+    override fun onGameStatusChanged(gameStatus: Hangman.GameStatus) {
+        showNotificationDialog(gameStatus)
     }
 }

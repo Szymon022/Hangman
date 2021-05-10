@@ -35,18 +35,17 @@ private lateinit var listener: NewGameDialogListener
 
             builder.setView(inflater.inflate(R.layout.new_game_dialog, null))
 
-                .setPositiveButton(R.string.start,
-                    DialogInterface.OnClickListener { dialog, which ->
-                        // start new game
-                        listener.onDialogStartClick(this)
-                    })
+                    .setPositiveButton(R.string.start) { _, _ ->
+                            // start new game
+                            listener.onDialogStartClick(this)
+                        }
 
-                .setNegativeButton(R.string.cancel,
-                    DialogInterface.OnClickListener { dialog, which ->
-                        getDialog()?.cancel()
+                    .setNegativeButton(R.string.cancel) { _, _ ->
+                            dialog?.cancel()
+                        }
 
-                    })
             builder.create()
+
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 

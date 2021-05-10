@@ -20,7 +20,7 @@ class Hangman(activity: Activity) {
     var livesLeft: Int = LIVES
     var word: String = ""
     var answer: MutableList<Char>? = null
-    var gameStatus: GameStatus? = GameStatus.GAME_STOPPED
+    var gameStatus: GameStatus = GameStatus.GAME_STOPPED
 
     enum class GameStatus {
         GAME_STARTED,
@@ -29,7 +29,20 @@ class Hangman(activity: Activity) {
         GAME_LOST
     }
 
+    private lateinit var listener: GameStatusChangedListener
+
+    interface GameStatusChangedListener {
+        fun onGameStatusChanged(gameStatus: GameStatus)
+    }
+
     init {
+
+        try {
+            listener = activity as GameStatusChangedListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException("Activity must implement GameStatusChangedListener")
+        }
+
         initAnswerArray("")
         gameUI = UI(activity, this)
     }
@@ -94,6 +107,7 @@ class Hangman(activity: Activity) {
                 if (isWon()) {
                     println("Congratulations! You won!")
                     gameStatus = GameStatus.GAME_WON
+                    listener.onGameStatusChanged(gameStatus)
                 }
             } else {
                 println("Wrong guess!")
@@ -102,6 +116,7 @@ class Hangman(activity: Activity) {
                 if (isLost()) {
                     println("Ops! You lost! :(")
                     gameStatus = GameStatus.GAME_LOST
+                    listener.onGameStatusChanged(gameStatus)
                 }
             }
             gameUI?.update(this)
