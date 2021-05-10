@@ -10,7 +10,7 @@ import kotlin.ClassCastException
 
 class NewGameDialogFragment : DialogFragment() {
 
-internal lateinit var listener: NewGameDialogListener
+private lateinit var listener: NewGameDialogListener
 
     interface NewGameDialogListener {
         fun onDialogStartClick(dialog: DialogFragment)
